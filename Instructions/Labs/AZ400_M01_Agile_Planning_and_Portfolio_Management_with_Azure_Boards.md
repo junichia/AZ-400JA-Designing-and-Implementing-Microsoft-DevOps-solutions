@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ: Azure Boards を使用したアジャイル プランニングとポートフォリオ管理'
     module: 'モジュール 1: DevOps の計画'
