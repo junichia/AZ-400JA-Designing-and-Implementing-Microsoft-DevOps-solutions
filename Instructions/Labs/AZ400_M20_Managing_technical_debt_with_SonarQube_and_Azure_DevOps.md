@@ -68,8 +68,8 @@ Azure DevOps では、「*技術的負債*」という言葉は戦術的な目�
    
     > **注**: SonarCloud の有料プランにサインアップするのでない限り、Azure DevOps プロジェクトがパブリックに設定されていることを確認してください。有料プランに*サインアップ*するのであれば、プライベート プロジェクトを作成できます。
 
-1.  ［**SonarExamples**］ ペインで Azure DevOps ポータルの一番左にある垂直メニュー バーで 「**リポジトリ**」をクリックします (「**SonarExamples は空です**」の場合)。****「**コードの追加!**」ペインの 「**リポジトリのインポート**」セクションで 「**インポート**」をクリックします。
-1.  「**Git リポジトリのインポート**」ペインで、**Git** が 「**リポジトリの種類**」ドロップダウン リストに表示されていることを確認します。「**クローン URL**」に「**https://github.com/SonarSource/sonar-scanning-examples.git**」と入力し、「**インポート**」をクリックします。 
+1.  ［**SonarExamples**］ ペインで Azure DevOps ポータルの一番左にある垂直メニュー バーで 「**リポジトリ**」をクリックします (「**SonarExamples は空です**」の場合)。「**コードの追加!**」ペインの 「**リポジトリのインポート**」セクションで 「**インポート**」をクリックします。
+1.  「**Git リポジトリのインポート**」ペインで、**Git** が 「**リポジトリの種類**」ドロップダウン リストに表示されていることを確認します。「**クローン URL**」に 「**https://github.com/SonarSource/sonar-scanning-examples.git**」 と入力し、「**インポート**」をクリックします。 
 
     > **注**: スキャン例のリポジトリには、MSBuild を使用する C#、Maven、Java を使用した Gradle など、多数のビルド システムと言語のサンプル プロジェクトが含まれています。
 
@@ -165,7 +165,7 @@ Azure DevOps では、「*技術的負債*」という言葉は戦術的な目�
 1.  「**新しいサービス接続**」ペインで 「**SonarCloud**」オプションを選択してから 「**次へ**」をクリックします。
 1.  「**新しい SonarCloud サービス接続**」ペインの 「**SonarCloud トークン**」テキストボックスに、前のタスクで記録しておいたトークンの値を貼り付けます。「**サービス接続名**」テキストボックスに「**SC**」と入力し、「**確認して保存**」をクリックします。 
 1.  「**コードはどこにありますか?**」ペインが表示されている Web ブラウザー タブに戻ります。
-1.  「**コードはどこにありますか?**」ペインで 「**Azure Repos Git **」をクリックします。
+1.  「**コードはどこにありますか?**」ペインで 「**Azure Repos Git**」をクリックします。
 1.  「**リポジトリの選択**」ペインで 「**SonarExamples**」をクリックします。 
 1.  「**パイプラインの構成**」ペインで 「**NET Desktop**」YAML テンプレートをクリックします。
 
@@ -231,8 +231,8 @@ Azure DevOps では、「*技術的負債*」という言葉は戦術的な目�
 
     > **注**: YAML パイプラインは、このタスクの残りの手順に従って変更する必要があります。 
 
-1.  **NuggetCommand@2** タスクで、`restoreSolution: 'SomeConsoleApplication.sln'` を `restoreSolution: '**\SomeConsoleApplication.sln'` に置き換え、このソリューションがリポジトリのルートにないことを考慮に入れます。
-1.  「**VSBuild@1**」タスクで、`solution: 'SomeConsoleApplication.sln'` を `solution: '**\SomeConsoleApplication.sln'` に置き換え、このソリューションがリポジトリのルートにないことを考慮に入れます。
+1.  **NuggetCommand@2** タスクで、`restoreSolution: 'SomeConsoleApplication.sln'` を `restoreSolution: 'SomeConsoleApplication.sln'` に置き換え、このソリューションがリポジトリのルートにないことを考慮に入れます。
+1.  「**VSBuild@1**」タスクで、`solution: 'SomeConsoleApplication.sln'` を `solution: 'SomeConsoleApplication.sln'` に置き換え、このソリューションがリポジトリのルートにないことを考慮に入れます。
 1.  「**SonarCloudPrepare@1**」タスクで `organization: 'myorga'` エントリの `myorga` プレースホルダーの値を SonarCloud 組織の名前に置き換えます。
 1.  「**SonarCloudPrepare@1**」タスクで、`projectKey: 'dotnet-framework-on-azdo'` エントリの `dotnet-framework-on-azdo` プレースホルダーの値を SonarCloud プロジェクト キーの名前に置き換えます。
 1.  「**SonarCloudPrepare@1**」タスクで、`projectName: 'Sample .NET Framework project with Azure DevOps'` エントリの `Sample .NET Framework project with Azure DevOps` プレースホルダーの値を SonarCloud プロジェクトの名前 (`SonarExamples`) に置き換えます。

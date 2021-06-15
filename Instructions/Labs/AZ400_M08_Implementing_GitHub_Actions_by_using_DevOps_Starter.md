@@ -116,7 +116,7 @@ lab:
     - **Application** -  サンプル Web サイトのコードが含まれています
     - **ArmTemplates** -  ワークフローが Azure リソースのプロビジョニングに使用する Azure Resource Manager テンプレートが含まれています
 
-1.  「GitHub リポジトリ」ページで、**「github/Workflows」**をクリックしてから、**「devops-starter-workflow.yml」**エントリをクリックします。
+1.  「GitHub リポジトリ」ページで、**「github/Workflows」** をクリックしてから、**「devops-starter-workflow.yml」** エントリをクリックします。
 1.  **devops-starter-workflow.yml** のコンテンツを表示する 「GitHub リポジトリ」ページで、そのコンテンツを確認し、**ビルド**、**デプロイ**、および**機能テスト**のジョブ定義が含まれていることに注意してください。
 1.  「GitHub リポジトリ」ページのツールバーで、「**アクション**」をクリックします。
 1.  「GitHub リポジトリ」ページの 「**アクション**」タブの 「**すべてのワークフロー**」セクションで、最新のワークフロー実行を表すエントリをクリックします。

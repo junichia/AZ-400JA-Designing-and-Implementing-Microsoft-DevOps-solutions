@@ -81,7 +81,7 @@ lab:
 
 1.  前の演習で生成した**アジャイル計画と Azure Boardsを使用したポートフォリオ管理**プロジェクトを使用して、Web ブラウザーに Azure DevOps 組織が表示されることを確認します。 
 
-    > **注**: または、「https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Agile%20Planning%20and%20Portfolio%20Management%20with%20Azure%20Boards) URL に移動して、プロジェクト ページに直接アクセスすることもできます。`<your-Azure-DevOps-account-name>` プレースホルダーは、アカウント名を表します。 
+    > **注**: または、https://dev.azure.com/`<your-Azure-DevOps-account-name>`/Agile%20Planning%20and%20Portfolio%20Management%20with%20Azure%20Boards) URL に移動して、プロジェクト ページに直接アクセスすることもできます。`<your-Azure-DevOps-account-name>` プレースホルダーは、アカウント名を表します。 
 
 1.  ページの左下隅にある 「**プロジェクト設定**」というラベルの付いた歯車アイコンをクリックして、「**プロジェクト設定**」ページを開きます。
 1.  「**全般**」セクションで、「**チーム**」タブを選択します。このプロジェクトにはすでにいくつかのチームがありますが、このラボ用に新しいチームを作成します。「**新しいチーム**」をクリックします。
