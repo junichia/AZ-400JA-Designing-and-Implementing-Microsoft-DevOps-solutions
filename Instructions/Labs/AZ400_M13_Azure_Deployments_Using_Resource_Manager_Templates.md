@@ -42,7 +42,7 @@ lab:
 このラボで使用するアプリケーションを特定:
     
 -   Microsoft Edge
--   [Visual Studio Code](https://code.visualstudio.com/).このラボでは前提条件の一部としてインストールされます。 
+-   [Visual Studio Code](https://code.visualstudio.com/)。 このラボでは前提条件の一部としてインストールされます。 
 
 #### Azure サブスクリプションの準備
 
