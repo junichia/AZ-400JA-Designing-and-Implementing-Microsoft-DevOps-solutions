@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ 06a: Azure Pipelines を使用した継続的インテグレーションの有効化'
     module: 'モジュール 6: Azure Pipelines を使用した継続的インテグレーションの実装'
