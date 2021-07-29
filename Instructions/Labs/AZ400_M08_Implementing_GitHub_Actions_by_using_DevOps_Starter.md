@@ -1,10 +1,10 @@
 ---
 lab:
-    title: 'ラボ: DevOps Starter を使用した GitHub アクションの実装'
+    title: 'ラボ 08: DevOps Starter を使用した GitHub アクションの実装'
     module: 'モジュール 8: GitHub アクションとの継続的インテグレーションを実装する'
 ---
 
-# ラボ: DevOps Starter を使用した GitHub アクションの実装
+# ラボ 08: DevOps Starter を使用した GitHub アクションの実装
 # 受講生用ラボ マニュアル
 
 ## ラボの概要
@@ -42,7 +42,7 @@ lab:
 #### Azure サブスクリプションの準備
 
 -   既存の Azure サブスクリプションを識別するか、新しいものを作成します。
--   Azure サブスクリプションで共同作成者または所有者のロールを持つ Microsoft アカウントまたは Azure AD アカウントを持っていることを確認します。詳細については、[「Azure portal を使用して Azure ロールの割り当てを一覧表示する」](https://docs.microsoft.com/ja-jp/azure/role-based-access-control/role-assignments-list-portal)および[「Azure Active Directory で管理者ロールを表示して割当てる」](https://docs.microsoft.com/ja-jp/azure/active-directory/roles/manage-roles-portal#view-my-roles)を参照してください。
+-   Azure サブスクリプションで共同作成者または所有者のロールを持つ Microsoft アカウントまたは Azure AD アカウントを持っていることを確認します。詳細については、[Azure portal を使用して Azure ロールの割り当てを一覧表示する](https://docs.microsoft.com/ja-jp/azure/role-based-access-control/role-assignments-list-portal) および [Azure Active Directory で管理者ロールを表示して割当てる](https://docs.microsoft.com/ja-jp/azure/active-directory/roles/manage-roles-portal#view-my-roles) を参照してください。
 
 #### GitHub アカウントを準備する
 
@@ -71,7 +71,7 @@ lab:
     > **注**: これにより、**DevOps Starter 設定**ブレードが表示されます。 
 
 1.  「**DevOps Starter 設定**」ブレードで、**GitHub** タイルが選択されていることを確認し、「**完了**」をクリックします。
-1.  「**DevOps Starter**」ブレードに戻り 、「**次へ: フレームワーク >**」をクリックします。
+1.  「**DevOps Starter**」ブレードに戻り 、「**次へ: フレームワーク >**」を選択します。
 1.  「**DevOps Starter**」ブレードの 「**アプリケーション フレームワークの選択**」ページで、**ASP.NET Core** タイルを選択し、「**次へ: サービス >**」をクリックします。
 1.  「**DevOps Starter**」ブレードの 「**アプリケーションをデプロイする Azure サービスの選択**」ページで、**Windows Web アプリ** タイルが選択されていることを確認し、「**次へ: 作成 >**」をクリックします。
 1.  「**DevOps Starter**」ブレードの 「**リポジトリとサブスクリプションの選択**」ページで、「**承認**」をクリックします。 
@@ -93,14 +93,14 @@ lab:
     | Web アプリの名前 | **azurewebsites.net** DNS 名前空間内の有効でグローバルに一意のホスト名 |
     | 場所 | Azure Web アプリをプロビジョニングできる Azure リージョンの名前 |
 
-    > **注**: プロビジョニングが完了するまで待ちます。通常は 1 分ほどかかります。
+    > **注**: プロビジョニングが完了するのを待ってください。通常は 1 分ほどかかります。
 
 1.  「**Deploy_DevOps_Project_az400m08l01 \| 概要**」ブレードで、「**リソースに移動**」をクリックします。
 1.  「**az400m08l01**」ブレードの **GitHub ワークフロー** タイルで、「**承認**」をクリックします。 
 1.  「**GitHub 認可**」ブレードで、もう一度 「**承認**」をクリックします。
 1.  「**az400m08l01**」ブレードに戻り、**GitHub ワークフロー** タイルでのアクションの進行状況を監視します。 
 
-    > **注**: GitHub ワークフローのビルド、デプロイ、機能テストのジョブが完了するのを待ちます。通常は 5 分ほどかかります。
+    > **注**: GitHub ワークフローのビルド、デプロイ、機能テストのジョブが完了するのを待ちます。これにはおよそ 5 分かかる場合があります。
 
 #### タスク 2: DevOps Starter プロジェクトの作成結果を確認する
 
@@ -112,7 +112,7 @@ lab:
 1.  「**az400m08l01**」ブレードの上部で、GitHub リポジトリへのリンクをクリックします。 
 1.  「GitHub リポジトリ」ページで、次のラベルが付いた 3 つのフォルダーに注意してください。
 
-    - **github\workflows** -  YAML 形式のワークフロー ファイルを含みます
+    - **.github\workflows** -  YAML 形式のワークフロー ファイルを含みます
     - **Application** -  サンプル Web サイトのコードが含まれています
     - **ArmTemplates** -  ワークフローが Azure リソースのプロビジョニングに使用する Azure Resource Manager テンプレートが含まれています
 
@@ -124,7 +124,7 @@ lab:
 1.  「GitHub リポジトリ」ページのツールバーで 「**設定**」をクリックし、「**設定**」タブで 「**シークレット**」をクリックします。
 1.  「**アクション シークレット**」ペインで、ターゲットの Azure サブスクリプションにアクセスするために必要な資格情報を表す **AZURE_CREDENTIALS** エントリに注意してください。 
 1.  **az400m08l01/Application/aspnet-core-dotnet-core/Pages/Index.cshtml** GitHub リポジトリページに移動し、右上隅にある鉛筆アイコンをクリックして編集モードに切り替えます。
-1.  20行目を `<div class="description line-1"> GitHub Workflow has been successfully updated</div>` に変更します。
+1.  19行目を `<div class="description line-1"> GitHub Workflow has been successfully updated</div>` に変更します。
 1.  ページの下部までスクロールし、「**変更のコミット**」をクリックします。
 1.  「GitHub リポジトリ」ページのツールバーで、「**アクション**」をクリックします。
 1.  「**すべてのワークフロー**」セクションで、「**Index.cshtml の更新**」エントリをクリックします。
@@ -136,7 +136,7 @@ lab:
 
 この演習では、このラボでプロビジョニングした Azure リソースを削除し、予期しない料金を排除します。 
 
->**注**: 新しく作成した Azure リソースのうち、使用しないリソースは必ず削除してください。使用しないリソースを削除しないと、予期しないコストが発生する場合があります。
+>**注**: Azure リソースのうち、使用しないリソースは必ず削除してください。使用しないリソースを削除しないと、予期しないコストが発生する場合があります。
 
 #### タスク 1: Azure ラボ リソースを削除する
 

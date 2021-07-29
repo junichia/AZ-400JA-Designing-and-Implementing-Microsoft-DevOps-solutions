@@ -1,11 +1,11 @@
 ---
 lab:
-    title: 'ラボ: Resource Manager テンプレートを使用した Azure デプロイ'
+    title: 'ラボ 13: Resource Manager テンプレートを使用した Azure デプロイ'
     module: 'モジュール 13: Azure ツールを使用したインフラストラクチャと構成の管理'
 ---
 
-# ラボ: Resource Manager テンプレートを使用した Azure デプロイ
-# 学生用ラボ マニュアル
+# ラボ 13: Resource Manager テンプレートを使用した Azure デプロイ
+# 受講生用ラボ マニュアル
 
 ## ラボの概要
 
@@ -15,7 +15,7 @@ lab:
 
 このラボを完了すると、次のことができるようになります。
 
-- Resource Manager テンプレートの作成
+- Resource Manager テンプレートを作成する
 - ストレージ リソース向けのリンク済みテンプレートを作成する
 - リンク済みテンプレートを Azure Blob Storage にアップロードして SAS トークンを生成する
 - メイン テンプレートを変更して、リンク済みテンプレートを呼び出す
@@ -26,7 +26,7 @@ lab:
 
 -   推定時間: **60 分**
 
-## 指示
+## 手順
 
 ### 開始する前に
 
@@ -42,7 +42,7 @@ lab:
 このラボで使用するアプリケーションを特定:
     
 -   Microsoft Edge
--   [Visual Studio Code](https://code.visualstudio.com/)。 このラボでは前提条件の一部としてインストールされます。 
+-   [Visual Studio Code](https://code.visualstudio.com/)。このラボでは前提条件の一部としてインストールされます。 
 
 #### Azure サブスクリプションの準備
 
@@ -63,12 +63,12 @@ lab:
 
 このラボでは、Azure Resource Manager テンプレートを作成し、リンクされたテンプレートを使ってこれをモジュラー化します。その後、主要なデプロイ テンプレートを修正し、リンクされたテンプレートと更新された依存関係を呼び出し、最終的にテンプレートを Azure にデプロイします。
 
-#### タスク 1: Resource Manager テンプレートの作成
+#### タスク 1: Resource Manager テンプレートを作成する
 
 このタスクでは、Visual Studio Code を使用して Resource Manager テンプレートを作成します
 
 1.  ラボのコンピューターから Visual Studio Code を起動し、Visual Studio Code で 「**ファイル**」 トップ レベル メニューをクリックします。ドロップダウン メニューで 「**基本設定**」 を選択します。カスケード メニューで 「**拡張機能**」 を選択し、「**拡張機能の選択**」 テキストボックスに「**Azure Resource Manager (ARM) ツール**」と入力します。該当する検索結果を選択し、「**インストール**」 をクリックして Azure Resource Manager ツールをインストールします。
-1.  Visual Studio Code で 「**ファイル**」 トップ レベル メニューをクリックし、ドロップダウン メニューで 「**ファイルを開く**」 を選択します。「ファイルを開く」 ダイアログ ボックスに URL (**https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json**) を入力し、「**開く**」 をクリックします。
+1.  Web ブラウザーで **https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-windows/azuredeploy.json** に接続します。コード ウィンドウの内容をコピーして、Visual Studi oコード エディターに貼り付けます。
 
     > **注**: テンプレートを最初から作成するよりも、[Azure クイックスタート テンプレート](https://azure.microsoft.com/ja-jp/resources/templates/) のひとつ (**シンプルな Windows テンプレート VM のデプロイ**) を使用します。テンプレートは GitHub からダウンロードできます ([101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows))。
 
@@ -247,7 +247,7 @@ lab:
 
 1.  **Bash** や **PowerShell** のどちらかを選択するためのプロンプトが表示されたら、**PowerShell** を選択します。 
 
-    > **注**: **Cloud Shell** を初めて起動し、「**ストレージがマウントされていません**」というメッセージが表示された場合は、このラボで使用しているサブスクリプションを選択し、「**ストレージの作成**」を選択します。 
+    >**注**: **Cloud Shell** を初めて起動し、「**ストレージがマウントされていません**」というメッセージが表示された場合は、このラボで使用しているサブスクリプションを選択し、「**ストレージの作成**」を選択します。 
 
 1.  Cloud Shell ペインの **PowerShell** セッションから、以下を実行して BLOB ストレージ コンテナーを作成し、前のタスクで作成したテンプレート ファイルをアップロードします。その後、メイン テンプレートで参照してリンク済みテンプレートにアクセスできるように SAS トークンを生成します。
 1.  まず、以下のコードのラインをコピーして貼り付け、デプロイ先の Azure リージョンの値を設定します。プロンプトに示されているように、コマンドは入力を待ちます。
@@ -310,16 +310,16 @@ lab:
     "Resource Group Name: $resourceGroupName"
     "Linked template URI with SAS token: $templateURI"
     ```
-    > **注**: スクリプトで生成された最終的な出力を必ず記録してください。これは、ラボの後半で必要になります。
+    >**注**: スクリプトで生成された最終的な出力を必ず記録してください。これは、ラボの後半で必要になります。
     
-    > **注**: 出力値は以下のようになるはずです:
+    >**注**: 出力値は以下のようになるはずです:
 
     ```
     Resource Group Name: az400m13l01-RG
     Linked template URI with SAS token: https://az400m13blob1677205310.blob.core.windows.net/linktempblobcntr/storage.json?sv=2018-03-28&sr=b&sig=B4hDLt9rFaWHZXToJlMwMjejAQGT7x0INdDR9bHBQnI%3D&se=2020-11-23T21%3A54%3A53Z&sp=r
     ```
 
-    > **注**: セキュリティのレベルを強化する必要がある場合は、メイン テンプレートのデプロイ中に SAS トークンをダイナミックに生成し、より短い有効期間を SAS トークンに割り当てることができます。
+    >**注**: セキュリティのレベルを強化する必要がある場合は、メイン テンプレートのデプロイ中に SAS トークンをダイナミックに生成し、より短い有効期間を SAS トークンに割り当てることができます。
 
 1.  「Cloud Shell」 ペインを閉じます。
 
@@ -456,7 +456,7 @@ lab:
 
 この演習では、このラボでプロビジョニングした Azure リソースを削除し、予期しない料金を排除します。 
 
-> **注**: 新しく作成した Azure リソースのうち、使用しないリソースは必ず削除してください。使用しないリソースを削除しないと、予期しないコストが発生する場合があります。
+>**注**: Azure リソースのうち、使用しないリソースは必ず削除してください。使用しないリソースを削除しないと、予期しないコストが発生する場合があります。
 
 #### タスク 1: Azure ラボ リソースを削除する
 
@@ -475,7 +475,7 @@ lab:
     az group list --query "[?starts_with(name,'az400m13l01-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
     ```
 
-    > **注**: コマンドは非同期に実行されるので (--nowait パラメーターで決定される)、同じ Bash セッション内ですぐに別の Azure CLI コマンドを実行できますが、リソース グループが実際に削除されるまでに数分かかります。
+    >**注**: コマンドは非同期に実行されるので (--nowait パラメーターで決定される)、同じ Bash セッション内ですぐに別の Azure CLI コマンドを実行できますが、リソース グループが実際に削除されるまでに数分かかります。
 
 ## レビュー
 
