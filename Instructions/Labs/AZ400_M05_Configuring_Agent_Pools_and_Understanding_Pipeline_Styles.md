@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: 'ラボ 05: エージェント プールの構成とパイプライン スタイルの理解'
     module: 'モジュール 5: Azure Pipelines の構成'
@@ -235,7 +235,7 @@ Windows 10 デスクトップでタスク バーを探します。タスク バ�
 
     | 設定 | 値 |
     | ------- | ----- |
-    | サーバーの URL を入力する | **https://dev.azure.com/`<organization_name>`** の形式でのAzure DevOps 組織の URL。ここで、`<organization_name>` は、Azure DevOps 組織の名前を表します |
+    | サーバーの URL を入力する | **https://dev.azure.com/ `<organization_name>`** の形式でのAzure DevOps 組織の URL。ここで、`<organization_name>` は、Azure DevOps 組織の名前を表します |
     | 認証タイプを入力する (PAT の場合は Enter 押します) | **Enter** |
     | パーソナル アクセス トークンを入力する | このタスクの前半で記録したアクセス トークン |
     | エージェント・プールを入力する (デフォルトで Enter を押します) | **az400m05l05a-pool** |

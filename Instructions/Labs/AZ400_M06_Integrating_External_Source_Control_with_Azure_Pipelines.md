@@ -1,10 +1,10 @@
----
+﻿---
 lab:
     title: 'ラボ 06b: 外部ソース管理を Azure Pipelines と統合する'
     module: 'モジュール 6: Azure Pipelines を使用した継続的インテグレーションの実装'
 ---
 
-# ラボ 06b: 外部ソース管理と Azure Pipelines の統合
+# ラボ 06b: 外部ソース管理を Azure Pipelines と統合する
 # 受講生用ラボ マニュアル
 
 ## ラボの概要

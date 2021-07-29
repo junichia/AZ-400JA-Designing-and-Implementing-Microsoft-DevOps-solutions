@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: 'ラボ 08: DevOps Starter を使用した GitHub アクションの実装'
     module: 'モジュール 8: GitHub アクションとの継続的インテグレーションを実装する'

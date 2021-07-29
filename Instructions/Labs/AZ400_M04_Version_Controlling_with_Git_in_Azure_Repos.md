@@ -1,6 +1,6 @@
----
+﻿---
 lab:
-    title: 'ラボ 04: Azure Repos での Git によるバージョン管理'
+    title: 'ラボ 04: Azure Repos の Git によるバージョン管理'
     module: 'モジュール 4: エンタープライズ DevOps での Git のスケーリング'
 ---
 
