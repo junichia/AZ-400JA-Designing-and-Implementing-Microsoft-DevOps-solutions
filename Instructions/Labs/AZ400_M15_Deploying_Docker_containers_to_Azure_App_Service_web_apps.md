@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ 15: Docker コンテナーを Azure App Service Web アプリにデプロイする'
     module: 'モジュール 15: Docker を使用したコンテナーの管理'
