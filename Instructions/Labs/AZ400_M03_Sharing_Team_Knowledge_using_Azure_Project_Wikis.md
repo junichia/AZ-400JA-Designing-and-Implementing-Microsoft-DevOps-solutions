@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ 03: Azure Project Wiki を使用してチーム知識を共有する'
     module: 'モジュール 3: 技術的負債の管理'
