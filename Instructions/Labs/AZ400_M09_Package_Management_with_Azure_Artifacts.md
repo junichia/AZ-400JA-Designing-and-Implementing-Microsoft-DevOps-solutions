@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ 09: Azure Artifacts によるパッケージ管理'
     module: 'モジュール 9: 依存関係管理戦略の設計と実装'
