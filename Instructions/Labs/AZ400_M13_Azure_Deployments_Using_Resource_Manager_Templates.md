@@ -1,4 +1,4 @@
-﻿---
+---
 lab:
     title: 'ラボ 13: Resource Manager テンプレートを使用した Azure デプロイ'
     module: 'モジュール 13: Azure ツールを使用したインフラストラクチャと構成の管理'
