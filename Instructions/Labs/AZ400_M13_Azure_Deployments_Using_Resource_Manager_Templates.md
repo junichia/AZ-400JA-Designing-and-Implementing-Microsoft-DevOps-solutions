@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: 'ラボ 13: Resource Manager テンプレートを使用した Azure デプロイ'
     module: 'モジュール 13: Azure ツールを使用したインフラストラクチャと構成の管理'
@@ -68,9 +68,9 @@ lab:
 このタスクでは、Visual Studio Code を使用して Resource Manager テンプレートを作成します
 
 1.  ラボのコンピューターから Visual Studio Code を起動し、Visual Studio Code で 「**ファイル**」 トップ レベル メニューをクリックします。ドロップダウン メニューで 「**基本設定**」 を選択します。カスケード メニューで 「**拡張機能**」 を選択し、「**拡張機能の選択**」 テキストボックスに「**Azure Resource Manager (ARM) ツール**」と入力します。該当する検索結果を選択し、「**インストール**」 をクリックして Azure Resource Manager ツールをインストールします。
-1.  Web ブラウザーで **https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-windows/azuredeploy.json** に接続します。コード ウィンドウの内容をコピーして、Visual Studi oコード エディターに貼り付けます。
+1.  Web ブラウザーで **https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json** に接続します。ファイルの [**Raw**] オプションをクリックします。コード ウィンドウの内容をコピーして、Visual Studio コード エディターに貼り付けます。
 
-    > **注**: テンプレートを最初から作成するよりも、[Azure クイックスタート テンプレート](https://azure.microsoft.com/ja-jp/resources/templates/) のひとつ (**シンプルな Windows テンプレート VM のデプロイ**) を使用します。テンプレートは GitHub からダウンロードできます ([101-vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows))。
+    > **注**: テンプレートを最初から作成するよりも、[Azure クイックスタート テンプレート](https://azure.microsoft.com/ja-jp/resources/templates/) のひとつ (**シンプルな Windows テンプレート VM のデプロイ**) を使用します。テンプレートは GitHub - [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows) からダウンロードできます。
 
 1.  ラボのコンピューターでエクスプローラーを開き、テンプレートの格納で使用する以下のローカル フォルダーを作成します。
 
@@ -102,12 +102,11 @@ lab:
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[variables('storageAccountName')]",
         "location": "[parameters('location')]",
-        "apiVersion": "2018-07-01",
+        "apiVersion": "2021-04-01",
         "sku": {
            "name": "Standard_LRS"
         },
-        "kind": "Storage",
-        "properties": {}
+        "kind": "Storage"
       }
     ],
     ```
@@ -120,7 +119,7 @@ lab:
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[parameters('storageAccountName')]",
         "location": "[parameters('location')]",
-        "apiVersion": "2018-07-01",
+        "apiVersion": "2021-04-01",
         "sku": {
            "name": "Standard_LRS"
         },
@@ -140,7 +139,6 @@ lab:
       "subnetName": "Subnet",
       "subnetPrefix": "10.0.0.0/24",
       "virtualNetworkName": "MyVNET",
-      "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
       "networkSecurityGroupName": "default-NSG"
     },
     ```
@@ -176,7 +174,7 @@ lab:
     }
     ```
 
-1. 最後に、テンプレート スキーマのバージョンを 2015-01-01 から 2019-04-01 に更新します。テンプレート定義ファイルの最初の数行を以下のように更新してください。
+1. 最後に、スキーマのバージョンが 2019-04-01 であることを確認してください (VS Code に表示されている場合は警告/エラーを無視してください):
 
     ```json
         {
@@ -196,38 +194,48 @@ lab:
     {
       "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
+      "metadata": {
+        "_generator": {
+          "name": "bicep",
+          "version": "0.4.1.14562",
+          "templateHash": "8381960602397537918"
+        }
+      },
       "parameters": {
-        "storageAccountName":{
-          "type": "string",
-          "metadata": {
-            "description": "Azure Storage account name."
-          }
-        },
         "location": {
           "type": "string",
           "defaultValue": "[resourceGroup().location]",
           "metadata": {
             "description": "Location for all resources."
           }
+        },
+        "storageAccountName": {
+          "type": "string",
+          "metadata": {
+            "description": "Azure Storage account name."
+          }
         }
+    
+      },
+      "functions": [],
+      "variables": {
       },
       "resources": [
         {
           "type": "Microsoft.Storage/storageAccounts",
+          "apiVersion": "2021-04-01",
           "name": "[parameters('storageAccountName')]",
-          "apiVersion": "2016-01-01",
           "location": "[parameters('location')]",
           "sku": {
             "name": "Standard_LRS"
           },
-          "kind": "Storage",
-          "properties": {}
+          "kind": "Storage"
         }
       ],
       "outputs": {
-      "storageUri": {
-        "type": "string",
-        "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
+        "storageUri": {
+          "type": "string",
+          "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
         }
       }
     }
@@ -253,33 +261,27 @@ lab:
 1.  まず、以下のコードのラインをコピーして貼り付け、デプロイ先の Azure リージョンの値を設定します。プロンプトに示されているように、コマンドは入力を待ちます。
 
     ```powershell
-    # Azure VM のプロビジョニングが可能で最も近い Azure の名前を提供
+    # Provide the name of the closest Azure region in which you can provision Azure VMs
     $location = Read-Host -Prompt 'Enter the name of Azure region (i.e. centralus)'
     ```
-1. 次に、以下のコードをコピーして同じ Cloud Shell セッションに貼り付け、BLOB ストレージ コンテナーを作成し、前のタスクで作成したテンプレート ファイルをアップロードします。その後、メイン テンプレートで参照してリンク済みテンプレートにアクセスできるように SAS トークンを生成します。
+1. 次に、次のコードをコピーして同じ Cloud Shell セッションに貼り付け、BLOB ストレージ コンテナーを作成します。
 
     ```powershell
-    # これは Azure ストレージ アカウントに名前を割り当てるために使われるランダムな文字列
+    # This is a random string used to assign the name to the Azure storage account
     $suffix = Get-Random
     $resourceGroupName = 'az400m13l01-RG'
     $storageAccountName = 'az400m13blob' + $suffix
 
-    # 作成する BLOB コンテナーの名前
+    # The name of the Blob container to be created
     $containerName = 'linktempblobcntr' 
-    
-    # このラボで使用される、完了したリンク済みテンプレート
-    $linkedTemplateURL = "https://raw.githubusercontent.com/Microsoft/PartsUnlimited/master/Labfiles/AZ-400T05_Implementing_Application_Infrastructure/M01/storage.json" 
 
-    # リンク済みテンプレートのダウンロードとアップロードに使用されるファイル名
+    # A file name used for downloading and uploading the linked template
     $fileName = 'storage.json' 
     
-    # ラボのリンク済みテンプレートを Azure Cloud Shell ホーム ディレクトリにダウンロード
-    Invoke-WebRequest -Uri $linkedTemplateURL -OutFile "$home/$fileName" 
-    
-    # リソース グループの作成
+    # Create a resource group
     New-AzResourceGroup -Name $resourceGroupName -Location $location 
     
-    # ストレージ アカウントの作成
+    # Create a storage account
     $storageAccount = New-AzStorageAccount `
       -ResourceGroupName $resourceGroupName `
       -Name $storageAccountName `
@@ -288,38 +290,42 @@ lab:
     
     $context = $storageAccount.Context
     
-    # コンテナーの作成
+    # Create a container
     New-AzureStorageContainer -Name $containerName -Context $context
-        
-    # リンク済みテンプレートのアップロード
-    Set-AzureStorageBlobContent `
-      -Container $containerName `
-      -File "$home/$fileName" `
-      -Blob $fileName `
-      -Context $context
-    
-    # SAS トークンの生成。24 時間の有効期限を設定しますが、セキュリティを強化するためにより短い値を使うこともできます。
-    $templateURI = New-AzureStorageBlobSASToken `
-      -Context $context `
-      -Container $containerName `
-      -Blob $fileName `
-      -Permission r `
-      -ExpiryTime (Get-Date).AddHours(24.0) `
-      -FullUri
-    
-    "Resource Group Name: $resourceGroupName"
-    "Linked template URI with SAS token: $templateURI"
     ```
-    >**注**: スクリプトで生成された最終的な出力を必ず記録してください。これは、ラボの後半で必要になります。
-    
-    >**注**: 出力値は以下のようになるはずです:
+  1. Cloud Shell ペインで、[**ファイルのアップロード / ダウンロード**] アイコンをクリックし、ドロップダウン メニューで [**アップロード**] をクリックします。[**開く**] ダイアログ ボックスで、**C:\\templates\\storage\\storage.json** に移動してこれを選択し、[**開く**] をクリックします。
 
-    ```
-    Resource Group Name: az400m13l01-RG
-    Linked template URI with SAS token: https://az400m13blob1677205310.blob.core.windows.net/linktempblobcntr/storage.json?sv=2018-03-28&sr=b&sig=B4hDLt9rFaWHZXToJlMwMjejAQGT7x0INdDR9bHBQnI%3D&se=2020-11-23T21%3A54%3A53Z&sp=r
-    ```
+      ```powershell
+      # Upload the linked template
+      Set-AzureStorageBlobContent `
+        -Container $containerName `
+        -File "$home/$fileName" `
+        -Blob $fileName `
+        -Context $context
 
-    >**注**: セキュリティのレベルを強化する必要がある場合は、メイン テンプレートのデプロイ中に SAS トークンをダイナミックに生成し、より短い有効期間を SAS トークンに割り当てることができます。
+      # Generate a SAS token. We set an expiry time of 24 hours, but you could have shorter values for increased security.
+      $templateURI = New-AzureStorageBlobSASToken `
+        -Context $context `
+        -Container $containerName `
+        -Blob $fileName `
+        -Permission r `
+        -ExpiryTime (Get-Date).AddHours(24.0) `
+        -FullUri
+
+      "Resource Group Name: $resourceGroupName"
+      "Linked template URI with SAS token: $templateURI"
+      ```
+
+  >**注**: スクリプトで生成された最終的な出力を必ず記録してください。これは、ラボの後半で必要になります。
+  
+  >**注**: 出力値は以下のようになるはずです:
+
+  ```
+      Resource Group Name: az400m13l01-RG
+      Linked template URI with SAS token: https://az400m13blob1677205310.blob.core.windows.net/linktempblobcntr/storage.json?sv=2018-03-28&sr=b&sig=B4hDLt9rFaWHZXToJlMwMjejAQGT7x0INdDR9bHBQnI%3D&se=2020-11-23T21%3A54%3A53Z&sp=r
+  ```
+
+  >**注**: セキュリティのレベルを強化する必要がある場合は、メイン テンプレートのデプロイ中に SAS トークンをダイナミックに生成し、より短い有効期間を SAS トークンに割り当てることができます。
 
 1.  「Cloud Shell」 ペインを閉じます。
 
@@ -337,12 +343,11 @@ lab:
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
+      "apiVersion": "2021-04-01",
       "sku": {
         "name": "Standard_LRS"
       },
-      "kind": "Storage",
-      "properties": {}
+      "kind": "Storage"
     },
     ```
 
@@ -366,7 +371,7 @@ lab:
           }
        }
     },
-    ```    
+    ```
 
 1.  メイン テンプレートで以下の詳細をレビューします:
 
@@ -389,17 +394,20 @@ lab:
 
     ```json
     "dependsOn": [
-      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]",
+      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
+    ]
     ```
 
     with
 
     ```json
-   "dependsOn": [
-     "linkedTemplate",
-     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-    ```
+    "dependsOn": [
+      
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]",
+      "linkedTemplate"
+    ]
+      ```
 
 1.  **Microsoft.Compute/virtualMachines** 要素のリソース セクションで、**properties/diagnosticsProfile/bootDiagnostics/storageUri** 要素を再構成し、以下を置き換えることによってリンク済みストレージ テンプレートで定義された出力値を反映させます:
 
@@ -441,7 +449,7 @@ lab:
     ```
 
 1.  'adminUsername’ の値を提供するよう指示されたら、「**Student**」と入力して **Enter** キーを押します。
-1.  'adminPassword' の値を提供するよう指示されたら、「**Pa55w.rd1234**」と入力して **Enter** キーを押します。
+1.  'adminPassword' の値を提供するよう指示されたら、「**Pa55w.rd1234**」と入力して **Enter** キーを押します。(パスワードの入力は表示されません)
 
 1.  テンプレートをデプロイする上記のコマンドの実行時にエラーが出た場合は以下を試してください。
 

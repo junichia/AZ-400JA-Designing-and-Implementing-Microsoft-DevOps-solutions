@@ -1,4 +1,4 @@
----
+﻿---
 lab:
     title: 'ラボ 04: Azure Repos の Git によるバージョン管理'
     module: 'モジュール 4: エンタープライズ DevOps での Git のスケーリング'
@@ -52,6 +52,10 @@ Git は、新しいプロジェクトの既定のバージョン管理プロバ�
 #### Azure DevOps 組織を設定する 
 
 このラボで使用できる Azure DevOps 組織がまだない場合は、[組織またはプロジェクト コレクションの作成](https://docs.microsoft.com/ja-jp/azure/devops/organizations/accounts/create-organization?view=azure-devops)で利用できる手順に従って作成してください。
+
+#### 注
+
+「**ラボ 02: VAzure Repos での Git によるバージョン管理**」を完了しており、「**演習 0: ラボの前提条件の構成**」および「**演習 1: 既存のリポジトリを複製する**」の手順を既に完了している場合は、「**演習 2: Azure DevOps からブランチを管理する**」にスキップできます。
 
 ### 演習 0: ラボの前提条件の構成
 
