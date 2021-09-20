@@ -53,6 +53,10 @@ Git は、新しいプロジェクトの既定のバージョン管理プロバ�
 
 このラボで使用できる Azure DevOps 組織がまだない場合は、[組織またはプロジェクト コレクションの作成](https://docs.microsoft.com/ja-jp/azure/devops/organizations/accounts/create-organization?view=azure-devops)で利用できる手順に従って作成してください。
 
+#### 注
+
+「**ラボ 02: VAzure Repos での Git によるバージョン管理**」を完了しており、「**演習 0: ラボの前提条件の構成**」および「**演習 1: 既存のリポジトリを複製する**」の手順を既に完了している場合は、「**演習 2: Azure DevOps からブランチを管理する**」にスキップできます。
+
 ### 演習 0: ラボの前提条件の構成
 
 この演習では、ラボの前提条件を設定します。これには、Azure DevOps Demo Generator テンプレートと Visual Studio Code 構成に基づいて事前構成された Parts Unlimited チーム プロジェクトが含まれます。

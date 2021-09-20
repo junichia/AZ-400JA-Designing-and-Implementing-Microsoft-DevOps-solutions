@@ -62,7 +62,7 @@ lab:
 
 1.  ラボのコンピューターで Web ブラウザーを起動し、[Azure DevOps Demo Generator](https://azuredevopsdemogenerator.azurewebsites.net) に移動します。このユーティリティ サイトは、ラボで必要なコンテンツ (作業項目、リポジトリなど) が事前設定されている新しい Azure DevOps プロジェクトをアカウント内で作成するプロセスを自動化します。 
 
-    > **注**: サイトの詳細については、https://docs.microsoft.com/ja-jp/azure/devops/demo-gen をご覧ください。
+    > **注**: このサイトの詳細については、「[Azure DevOps Services Demo Generator とは](https://docs.microsoft.com/ja-jp/azure/devops/demo-gen)」を参照してください。
 
 1.  「**サインイン**」をクリックし、Azure DevOps サブスクリプションに関連のある Microsoft アカウントを使用してサインインします。
 1.  必要な場合は、「**Azure DevOps Demo Generator**」ページで「**承諾する**」をクリックし、Azure DevOps サブスクリプションへのアクセス許可要求を承諾します。
@@ -78,7 +78,7 @@ lab:
 
 このタスクでは、Windows Server 2016 のほか、SQL Express 2017、Chrome、Firefox を実行している Azure VM をプロビジョニングします。
 
-1.  下の 「Azure にデプロイ」 ボタンをクリックします。[![Azure にデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json).これで自動的に Azure portal の 「**カスタム デプロイ**」 ブレードにリダイレクトされます。
+1.  「Azure にデプロイ」ボタンをクリックします。[![Azure にデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json)これで自動的に Azure portal の [**カスタム デプロイ**] ブレードにリダイレクトされます。
 1.  指示されたら、このラボで使用する Azure サブスクリプションで所有者のロールがあり、このサブスクリプションに関連のある Azure AD テナントでグローバル管理者のロールがあるユーザー アカウントを使用してサインインします。
 1.  「**カスタム デプロイ**」 ブレードで以下の設定を指定します。
 
@@ -132,7 +132,9 @@ lab:
     | 設定 | 値 |
     | --- | --- |
     | 名前 | **機能テストの設定と実行ラボ** |
-    | スコープ | **フル アクセス** |
+    | スコープ | **カスタム定義済み** |
+    | スコープ | ウィンドウの下部にある「**すべてのスコープを表示**」をクリックする |
+    | スコープ | **エージェント プール** - **読み取りと管理** |
 
 1.  「**成功**」ペインで個人用アクセス トークンの値をクリップボードにコピーします。
 
