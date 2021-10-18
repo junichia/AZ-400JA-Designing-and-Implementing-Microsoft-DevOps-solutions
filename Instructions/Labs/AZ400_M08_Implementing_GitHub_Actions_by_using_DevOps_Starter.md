@@ -65,40 +65,52 @@ lab:
 このタスクでは、GitHub リポジトリを自動的にセットアップする Azure DevOps Starter プロジェクトを作成し、GitHub リポジトリのコンテンツに基づいて Azure Web アプリをデプロイする GitHub ワークフローを作成してトリガーします。
 
 1.  ラボのコンピューターから Web ブラウザーを起動し、[**Azure Portal**](https://portal.azure.com) に移動します。このラボで使用している Azure サブスクリプションで少なくとも共同作成者のロールがあるユーザー アカウントを使ってサインインします。
-1.  Azure portal で、**DevOps スターター** リソースの種類を検索して選択し、**DevOps スターター** ブレードで 「**+ 追加**]、「**+ 新規**」または 「**+ 作成**」をクリックします。
-1.  「**DevOps Starter**」ブレードの 「**新しいアプリケーションで新しく開始する**」ページで、ここをクリックして、「**GitHub を使用して DevOps Starter をセットアップする**」テキストで、**ここの**リンクをクリックします。 
+
+1.  Azure portal で、**DevOps Starter** リソースの種類を検索して選択し、**DevOps Starter** ブレードで 「**+ 作成**]をクリックします。
+
+1.  「**DevOps Starter**」ブレードの 「**Start fresh with a new application**」ページで、「**Setting up DevOps starter with GitHub, change settings**」の横にある **Here**リンクをクリックします。 
 
     > **注**: これにより、**DevOps Starter 設定**ブレードが表示されます。 
 
-1.  「**DevOps Starter 設定**」ブレードで、**GitHub** タイルが選択されていることを確認し、「**完了**」をクリックします。
-1.  「**DevOps Starter**」ブレードに戻り 、「**次へ: フレームワーク >**」を選択します。
-1.  「**DevOps Starter**」ブレードの 「**アプリケーション フレームワークの選択**」ページで、**ASP.NET Core** タイルを選択し、「**次へ: サービス >**」をクリックします。
-1.  「**DevOps Starter**」ブレードの 「**アプリケーションをデプロイする Azure サービスの選択**」ページで、**Windows Web アプリ** タイルが選択されていることを確認し、「**次へ: 作成 >**」をクリックします。
-1.  「**DevOps Starter**」ブレードの 「**リポジトリとサブスクリプションの選択**」ページで、「**承認**」をクリックします。 
+1.  「**DevOps Starter 設定**」ブレードで、**GitHub** タイルが選択されていることを確認し、「**Done**」をクリックします。
 
-    > **注**: これにより、「**Azure GitHub Actions の承認**」ポップアップ Web ブラウザー ウィンドウが表示されます。
+1.  「**DevOps Starter**」ブレードに戻り 、「**次へ: Framework >**」を選択します。
 
-1.  「**Azure GitHub Actions の承認**」ポップアップ ウィンドウで、必要なアクセス許可を確認し、「**Azure Github Actions の承認**」をクリックします。 
+1.  「**DevOps Starter**」ブレードの 「**Choose an application framework**」ページで、**ASP.NET Core** タイルを選択し、「**Next: Service >**」をクリックします。
 
+1.  「**DevOps Starter**」ブレードの 「**Select an Azure service to deploy the application**」ページで、**Windows Web App** タイルを選択して、「**Next Create >**」をクリックします。
+
+1.  「**DevOps Starter**」ブレードの 「**Select Repository and Subscription**」ページで、「**Authorize**」をクリックします。 
+
+    > **注**: これにより、「**Authorize Azure Github Actions**」ポップアップ Web ブラウザー ウィンドウが表示されます。
+
+1.  「**Authorize Azure Github Actions**」ポップアップ ウィンドウで、必要なアクセス許可を確認し、「**Authorize AzureGithubActions**」をクリックします。 
+
+    > **注**: GitHub の認証が求められたらGitHubのIDとパスワードを使用して認証してください。
+    
     > **注**: これにより、Web ポップアップ ブラウザー ウィンドウが Azure DevOps サイトにリダイレクトされ、Azure DevOps 情報の入力を求められます。
 
 1.  プロンプトが表示されたら、ポップアップ Web ブラウザー ウィンドウで 「**続行**」をクリックします。
-1.  「**DevOps Starter**」ブレードの 「**リポジトリとサブスクリプションの選択**」ページに戻り、次の設定を指定して、「**Review + create**]をクリックします。
+
+1.  「**DevOps Starter**」ブレードの 「**Select Repository and Subscription**」ページが表示されたら、以下の設定を指定して、「**Review + create**]をクリックします。
 
     | 設定 | 値 |
     | ------- | ----- |
     | 組織 | GitHub アカウントの名前 |
-    | リポジトリ | **az400m08l01** |
-    | サブスクリプション | このラボに使用する Azure サブスクリプションの名前 |
-    | Web アプリの名前 | **azurewebsites.net** DNS 名前空間内の有効でグローバルに一意のホスト名 |
+    | Repository | **az400m08l01** |
+    | Subscription | このラボに使用する Azure サブスクリプションの名前 |
+    | Web App Name | DNS 名前空間内の有効でグローバルに一意のホスト名. **<指定したアプリ名>.azurewebsites.net** というURLになる |
     | 場所 | Azure Web アプリをプロビジョニングできる Azure リージョンの名前 |
 
     > **注**: プロビジョニングが完了するのを待ってください。通常は 1 分ほどかかります。
 
 1.  「**Deploy_DevOps_Project_az400m08l01 \| 概要**」ブレードで、「**リソースに移動**」をクリックします。
-1.  「**az400m08l01**」ブレードの **GitHub ワークフロー** タイルで、「**承認**」をクリックします。 
-1.  「**GitHub 認可**」ブレードで、もう一度 「**承認**」をクリックします。
-1.  「**az400m08l01**」ブレードに戻り、**GitHub ワークフロー** タイルでのアクションの進行状況を監視します。 
+
+1.  「**az400m08l01**」ブレードの **GitHub Workflow** タイルで、「**Authorize**」をクリックします。 
+
+1.  「**GitHub Authorizetion**」ブレードで、もう一度 「**Authorize**」をクリックします。
+
+1.  「**az400m08l01**」ブレードに戻り、**GitHub Workflow** タイルでのアクションの進行状況を監視します。 
 
     > **注**: GitHub ワークフローのビルド、デプロイ、機能テストのジョブが完了するのを待ちます。これにはおよそ 5 分かかる場合があります。
 
@@ -106,30 +118,48 @@ lab:
 
 このタスクでは、DevOps Starter プロジェクトの作成結果を確認します。
 
-1.  Azure portal を表示している Web ブラウザー ウィンドウの 「**az400m08l01**」ブレードで、**GitHub ワークフロー**のセクションを確認し、**ビルド**、**デプロイ**、および**機能テスト**のジョブが正常に完了したことを確認します。
-1.  「**az400m08l01**」ブレードで、**Azure リソース**のセクションを確認し、App Service Webア プリインスタンスと対応する Application Insights リソースが含まれていることを確認します。
-1.  「**az400m08l01**」ブレードの上部で、前のタスクで作成した**ワークフロー ファイル**と GitHub リポジトリへのリンクをメモします。
-1.  「**az400m08l01**」ブレードの上部で、GitHub リポジトリへのリンクをクリックします。 
-1.  「GitHub リポジトリ」ページで、次のラベルが付いた 3 つのフォルダーに注意してください。
+1.  Azure portal を表示している Web ブラウザー ウィンドウの 「**az400m08l01**」ブレードで、**GitHub Workflow** のセクションを確認し、**Build**、**Deploy**、および**Functional tests**のジョブが正常に完了したことを確認します。
+
+1.  「**az400m08l01**」ブレードで、**Azure Resources**のセクションを確認し、App Service Webアプリインスタンスと対応する **Application Insights** リソースが含まれていることを確認します。
+
+1.  「**az400m08l01**」ブレードの上部で、**Workflow file** が保存されている GitHub リポジトリへのリンクをクリックします。 
+
+1.  「GitHub リポジトリ」ページで、**az400m01|01** をクリックしてトップページに移動し、次のラベルが付いた 3 つのフォルダーに注意してください。
 
     - **.github\workflows** -  YAML 形式のワークフロー ファイルを含みます
     - **Application** -  サンプル Web サイトのコードが含まれています
     - **ArmTemplates** -  ワークフローが Azure リソースのプロビジョニングに使用する Azure Resource Manager テンプレートが含まれています
 
 1.  「GitHub リポジトリ」ページで、**「github/Workflows」** をクリックしてから、**「devops-starter-workflow.yml」** エントリをクリックします。
-1.  **devops-starter-workflow.yml** のコンテンツを表示する 「GitHub リポジトリ」ページで、そのコンテンツを確認し、**ビルド**、**デプロイ**、および**機能テスト**のジョブ定義が含まれていることに注意してください。
-1.  「GitHub リポジトリ」ページのツールバーで、「**アクション**」をクリックします。
-1.  「GitHub リポジトリ」ページの 「**アクション**」タブの 「**すべてのワークフロー**」セクションで、最新のワークフロー実行を表すエントリをクリックします。
-1.  「ワークフロー実行」ページで、ワークフロース テータス、および**注釈**と**成果物**のリストを確認します。
-1.  「GitHub リポジトリ」ページのツールバーで 「**設定**」をクリックし、「**設定**」タブで 「**シークレット**」をクリックします。
-1.  「**アクション シークレット**」ペインで、ターゲットの Azure サブスクリプションにアクセスするために必要な資格情報を表す **AZURE_CREDENTIALS** エントリに注意してください。 
-1.  **az400m08l01/Application/aspnet-core-dotnet-core/Pages/Index.cshtml** GitHub リポジトリページに移動し、右上隅にある鉛筆アイコンをクリックして編集モードに切り替えます。
+
+1.  **devops-starter-workflow.yml** のコンテンツを表示するページで、**Build**、**Deploy**、および**FunctionalTests**のジョブ定義が含まれていることに注意してください。
+
+1.  「GitHub リポジトリ」ページの上のツールバーで、「**Actions**」をクリックします。
+
+1.  「**All workflows**」セクションで、最新のワークフロー実行を表すエントリをクリックします。
+
+1.  「ワークフロー実行」ページで、ワークフロース テータス、および**Annotations（注釈）** と **Artifacts（成果物）** のリストを確認します。
+
+1.  「GitHub リポジトリ」ページの上のツールバーで 「**Settings**」をクリックし、左側のメニューから「**Secrets**」をクリックします。
+
+1.  「**Actions secrets**」ペインで、ターゲットの Azure サブスクリプションにアクセスするために必要な資格情報を表す **AZURE_CREDENTIALS** エントリに注意してください。 
+
+1. **<>Code** タブに移動します。
+
+1.  **Application/aspnet-core-dotnet-core/Pages/Index.cshtml** GitHub リポジトリページに移動し、右上隅にある鉛筆アイコンをクリックして編集モードに切り替えます。
+
 1.  19行目を `<div class="description line-1"> GitHub Workflow has been successfully updated</div>` に変更します。
-1.  ページの下部までスクロールし、「**変更のコミット**」をクリックします。
-1.  「GitHub リポジトリ」ページのツールバーで、「**アクション**」をクリックします。
-1.  「**すべてのワークフロー**」セクションで、「**Index.cshtml の更新**」エントリをクリックします。
+
+1.  ページの下部までスクロールし、「**Commit changes**」をクリックします。
+
+1.  「GitHub リポジトリ」ページのツールバーで、「**Actions**」をクリックします。
+
+1.  「**すべてのワークフロー**」セクションで、「**Update Index.cshtml**」エントリをクリックします。
+
 1.  **devops-starter-workflow.yml** セクションで、デプロイの進行状況を監視し、正常に完了したことを確認します。
+
 1.  Azure portal に 「DevOps Starter」ブレードを表示しているブラウザー ウィンドウに切り替え、**アプリケーション エンドポイント** エントリの横にある 「**参照**」リンクをクリックします。
+
 1.  新しく開いた Web ブラウザー ウィンドウで、GitHub リポジトリでコミットした変更を表す更新されたテキストが Web アプリのホームページに表示されていることを確認します。
 
 ### 演習 2: Azure ラボ リソースを削除する
