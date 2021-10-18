@@ -65,7 +65,7 @@ lab:
 
 1.  必要な場合は、「**Azure DevOps Demo Generator**」ページで「**承諾する**」をクリックし、Azure DevOps サブスクリプションへのアクセス許可要求を承諾します。
 
-1.  「**Create Project Name(新規プロジェクトの作成)**」ページで、「**New Project Name(新しいプロジェクト名)**」テキストボックスに、「**Agile Planning and Portfolio Management with Azure Boards**」を入力し、「**Select organization(組織の選択)**」ドロップダウン リストで、Azure DevOps 組織を選択し、「**Choose template(テンプレートの選択)**」をクリックします。
+1.  「**Create New Project(新規プロジェクトの作成)**」ページで、「**New Project Name(新しいプロジェクト名)**」テキストボックスに、「**Agile Planning and Portfolio Management with Azure Boards**」を入力し、「**Select organization(組織の選択)**」ドロップダウン リストで、Azure DevOps 組織を選択し、「**Choose template(テンプレートの選択)**」をクリックします。
 
 1.  テンプレートのリストで、**PartsUnlimited** テンプレートを見つけ、「**Select Template(テンプレートの選択)**」をクリックします。
 
