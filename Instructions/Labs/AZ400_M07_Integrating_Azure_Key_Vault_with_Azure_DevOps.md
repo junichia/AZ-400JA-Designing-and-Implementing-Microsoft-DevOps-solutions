@@ -173,7 +173,7 @@ Azure Pipelines からAzure リソースにアプリをデプロイするには�
     | --- | --- |
     | Upload options | **手動** |
     | 名前 | **sqldbpassword** |
-    | 値 | 任意の有効な MySQL のパスワード値 |
+    | 値 | 任意の有効な MySQL のパスワード値（例）Pa55w.rd1234 |
 
 
 #### タスク 3: Azure Pipelines を確認する
@@ -184,15 +184,23 @@ Azure Pipelines からAzure リソースにアプリをデプロイするには�
 
 1.  Azure DevOps ポータルの垂直ナビゲーション ペインで、「**パイプライン**」 を選択し、「**パイプライン**」 ペインが表示されていることを確認します。
 
-1.  「**パイプライン**」 ペインで、**SmartHotel-CouponManagement-CI** パイプラインを表すエントリをクリックし、「**SmartHotel-CouponManagement-CI**」 ペインで 「**パイプラインの実行**」 をクリックします。
+1. **SmartHotel-CouponManagement-CI** をクリックし、「**Edit**」をクリックします。
 
-1.  「**Run pipeline**」 ペインで、デフォルト設定を受け入れ、「**Run**」 をクリックしてビルドをトリガーします。
+1. **SmartHotel-CouponManagement-CI** をクリックし、「**Edit**」をクリックします。
+
+1. 画面の右側で、Agent Pool で **Azure Pipelines** を選択、さらに、Agent Specification で **ubuntu-18.04** を選択します。
+
+1. 「**Save & Queue**」 をクリックします。
+
+1. 「**Run pipeline**」 ペインで、デフォルト設定を受け入れ、「**Run**」 をクリックしてビルドをトリガーします。
 
 1.  Azure DevOps ポータルの垂直ナビゲーション ペインの 「**パイプライン**」 セクションで、「**リリース**」 を選択します。 
 
 1.  **SmartHotel-CouponManagement-CD** ペインで、右上隅にある 「**Edit**」 をクリックします。
 
-1.  「**All pipelines」 > 「SmartHotel-CouponManagement-CD**」 ペインで、「**Tasks**」 タブを選択し、ドロップダウン メニューで 「**Dev**」 を選択します。
+1. **Valuables** タブをクリックし、**resourcegroup** 変数に **az400m07l01-RG** を設定します。ロックがかかっている場合は、鍵マークをクリックしてロックを解除してください。
+
+1. 「**Tasks**」 タブを選択し、ドロップダウン メニューで 「**Dev**」 を選択します。
 
     > **注**: **Dev**ステージのリリース定義には、**Azure Key Vault** タスクがあります。このタスクは、Azure KeyVault から*シークレット*をダウンロードします。ラボで以前に作成したサブスクリプションと Azure Key Vault リソースを指定する必要があります。
 
@@ -245,7 +253,7 @@ Azure Pipelines からAzure リソースにアプリをデプロイするには�
 
 1.  最後に 「**Save**」して 「**Create release**」 >  「**Create**」をクリックし (既定のままにします)、デプロイを始めます。
 
-1. パイプラインが正常に実行されていることを確認し、終了したら、Azure portal でリソース グループ **azurekeyvaultlab** を開いて、作成されたリソースを確認します。**App Service** を開いて参照し **(「概要」-> 「参照」)**、公開された Web サイトを表示します。
+1. パイプラインが正常に実行されていることを確認し、終了したら、Azure portal でリソース グループ **az400m07l01-RG** を開いて、作成されたリソースを確認します。**App Service** を開いて参照し **(「概要」-> 「参照」)**、公開された Web サイトを表示します。
 
 1. 表示されたサイト（Smart Hotel Coupon Management）には、me@smarthotel360.com / 1234  でログインすることができます。
 
