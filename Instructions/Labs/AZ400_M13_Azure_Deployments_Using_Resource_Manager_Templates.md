@@ -67,17 +67,23 @@ lab:
 
 このタスクでは、Visual Studio Code を使用して Resource Manager テンプレートを作成します
 
-1.  ラボのコンピューターから Visual Studio Code を起動し、Visual Studio Code で 「**ファイル**」 トップ レベル メニューをクリックします。ドロップダウン メニューで 「**基本設定**」 を選択します。カスケード メニューで 「**拡張機能**」 を選択し、「**拡張機能の選択**」 テキストボックスに「**Azure Resource Manager (ARM) ツール**」と入力します。該当する検索結果を選択し、「**インストール**」 をクリックして Azure Resource Manager ツールをインストールします。
+1.  ラボのコンピューターから Visual Studio Code を起動し、Visual Studio Code で 「**ファイル**」 メニューをクリックします。ドロップダウン メニューで 「**Preferences**」 を選択します。
+
+1. カスケード メニューで 「**Extensions**」 を選択し、テキストボックスに「**Azure Resource Manager (ARM) Tools**」と入力します。該当する検索結果を選択し、「**Install**」 をクリックして Azure Resource Manager ツールをインストールします。
+
+1. Visual Studio Code で、新しいファイルを作成します。
+
 1.  Web ブラウザーで **https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json** に接続します。ファイルの [**Raw**] オプションをクリックします。コード ウィンドウの内容をコピーして、Visual Studio コード エディターに貼り付けます。
 
-    > **注**: テンプレートを最初から作成するよりも、[Azure クイックスタート テンプレート](https://azure.microsoft.com/ja-jp/resources/templates/) のひとつ (**シンプルな Windows テンプレート VM のデプロイ**) を使用します。テンプレートは GitHub - [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows) からダウンロードできます。
+    > **注**: テンプレートを最初から作成するよりも、[Azure クイックスタート テンプレート](https://azure.microsoft.com/ja-jp/resources/templates/) のひとつ (**シンプルな Windows テンプレート VM のデプロイ**) を使用することをお勧めします。テンプレートは GitHub - [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-windows) からダウンロードできます。
 
 1.  ラボのコンピューターでエクスプローラーを開き、テンプレートの格納で使用する以下のローカル フォルダーを作成します。
 
     - **C:\\templates** 
     - **C:\\templates\\storage** 
 
-1.  azuredeploy.json テンプレートのある Visual Studio Code ウィンドウに戻り、「**ファイル**」 トップ レベル メニューをクリックします。ドロップダウン メニューで 「**名前を付けて保存**」 をクリックし、新しく作成されたローカル フォルダー **C:\\templates** でテンプレートを **azuredeploy.json** として保存します。
+1.  テンプレートを貼り付けた Visual Studio Code ウィンドウに戻り、「**ファイル**」 をクリックします。ドロップダウン メニューで 「**Save As**」 をクリックし、新しく作成されたローカル フォルダー **C:\\templates** でテンプレートを **azuredeploy.json** として保存します。
+
 1.  テンプレートをレビューし、その構造をよりよく把握します。テンプレートには 5 種類のリソースが含まれています。
 
     - Microsoft.Storage/storageAccounts
@@ -86,7 +92,7 @@ lab:
     - Microsoft.Network/networkInterfaces
     - Microsoft.Compute/virtualMachines
 
-1.  Visual Studio Code でファイルを再び保存しますが、今回は保存先として **C:\\templates\\storage**、ファイル名として **storage.json** を選択します。
+1.  Visual Studio Code のファイルを今回は保存先として **C:\\templates\\storage**、ファイル名として **storage.json** を指定します。
 
     > **注**: これで 2 つの同一の JSON ファイルができました。**C:\\templates\\azuredeploy.json** と **C:\\templates\\storage\\storage.json** です。
 
@@ -94,7 +100,7 @@ lab:
 
 このタスクでは、前のタスクで保存したテンプレートを変更し、リンク済みのストレージ テンプレート「**storage.json**」がストレージ アカウントのみを作成し、最初のテンプレートで実行が起動されるようにします。リンク済みのストレージ テンプレートは、メイン テンプレート「**azuredeploy.json**」に値を戻す必要があります。この値は、リンク済みストレージ テンプレートの出力要素で定義されます。
 
-1.  Visual Studio Code ウィンドウに表示されている **storage.json** ファイルの 「**リソース セクション**」 で、**storageAccounts** リソース以外のすべてのリソース要素を削除します。これによりリソース セクションは以下のようになるはずです。
+1.  Visual Studio Code ウィンドウに表示されている **storage.json** ファイルの 「**Resources セクション**」 で、**storageAccounts** リソース以外のすべてのリソース要素を削除します。これによりリソース セクションは以下のようになるはずです。**Outputs** セクションを削除しないように注意してください。
 
     ```json
     "resources": [
@@ -111,7 +117,7 @@ lab:
     ],
     ```
 
-1.  storageAccount の名前要素を変数からパラメーターに変更します
+1.  storageAccount の **name** 要素を **variables** 変数から **parameters** に変更します
 
     ```json
     "resources": [
@@ -129,7 +135,7 @@ lab:
     ],
     ```
 
-1.  次に、変数セクション全体とあらゆる変数の定義を削除します:
+1.  次に、variables セクション全体を削除します:
 
     ```json
     "variables": {
@@ -143,7 +149,7 @@ lab:
     },
     ```
 
-1.  次に、場所以外のあらゆるパラメーター値を削除し、以下のパラメーター コードを追加すると、次のような結果になります:
+1.  次に、location 以外のあらゆる parameter を削除し、**storageAccountName** パラメーター を以下のように追加します。
 
     ```json
     "parameters": {
@@ -163,7 +169,7 @@ lab:
     },
     ```
 
-1.  次に、出力セクションを更新して、storageURI 出力値を定義します。メイン テンプレートの仮想マシン リソース定義では、storageUri 値が必要です。この値を、出力値としてメイン テンプレートに値を渡し返します。以下のようになるように出力を変更します。
+1.  次に、Outputs セクションを更新して、storageURI 出力値を定義します。メイン テンプレートの仮想マシン リソース定義では、storageUri 値が必要です。この値を、出力値としてメイン テンプレートに値を渡し返します。以下のようになるように出力を変更します。
 
     ```json
     "outputs": {
@@ -174,7 +180,7 @@ lab:
     }
     ```
 
-1. 最後に、スキーマのバージョンが 2019-04-01 であることを確認してください (VS Code に表示されている場合は警告/エラーを無視してください):
+1. 最後に、スキーマのバージョンが **2019-04-01** であることを確認してください (VS Code に表示されている場合は警告/エラーを無視してください):
 
     ```json
         {
@@ -188,7 +194,7 @@ lab:
               }
     ```
 
-1. Storage.json テンプレートを保存します。リンク済みストレージ テンプレートは次のようになります:
+1. Storage.json テンプレートを保存します。完成したストレージ テンプレートは次のようになります:
 
     ```json
     {
@@ -258,7 +264,7 @@ lab:
     >**注**: **Cloud Shell** を初めて起動し、「**ストレージがマウントされていません**」というメッセージが表示された場合は、このラボで使用しているサブスクリプションを選択し、「**ストレージの作成**」を選択します。 
 
 1.  Cloud Shell ペインの **PowerShell** セッションから、以下を実行して BLOB ストレージ コンテナーを作成し、前のタスクで作成したテンプレート ファイルをアップロードします。その後、メイン テンプレートで参照してリンク済みテンプレートにアクセスできるように SAS トークンを生成します。
-1.  まず、以下のコードのラインをコピーして貼り付け、デプロイ先の Azure リージョンの値を設定します。プロンプトに示されているように、コマンドは入力を待ちます。
+1.  まず、以下のコードのラインをコピーして貼り付け実行します。プロンプトが表示されたら、デプロイ先の Azure リージョンの値(eastus 等）を設定します。
 
     ```powershell
     # Provide the name of the closest Azure region in which you can provision Azure VMs
@@ -295,6 +301,8 @@ lab:
     ```
   1. Cloud Shell ペインで、[**ファイルのアップロード / ダウンロード**] アイコンをクリックし、ドロップダウン メニューで [**アップロード**] をクリックします。[**開く**] ダイアログ ボックスで、**C:\\templates\\storage\\storage.json** に移動してこれを選択し、[**開く**] をクリックします。
 
+1. 以下のコマンドを実行して、アップロードされた JSON ファイルを、Azure Storage にコピーします。
+
       ```powershell
       # Upload the linked template
       Set-AzureStorageBlobContent `
@@ -303,7 +311,7 @@ lab:
         -Blob $fileName `
         -Context $context
 
-      # Generate a SAS token. We set an expiry time of 24 hours, but you could have shorter values for increased security.
+      # 以下のコマンドで、SAS トークンを生成します。有効期限は２４時間です。
       $templateURI = New-AzureStorageBlobSASToken `
         -Context $context `
         -Container $containerName `
@@ -316,7 +324,7 @@ lab:
       "Linked template URI with SAS token: $templateURI"
       ```
 
-  >**注**: スクリプトで生成された最終的な出力を必ず記録してください。これは、ラボの後半で必要になります。
+  >**注**: スクリプトで生成された SAS Token を必ず記録してください。これは、ラボの後半で必要になります。
   
   >**注**: 出力値は以下のようになるはずです:
 
@@ -335,7 +343,8 @@ lab:
 
 > **注**: あらゆるストレージ要素をモジュラー化してテンプレート構造に加えた変更を説明するため、メイン テンプレートを変更して新しいストレージ リソース定義を呼び出す必要があります。
 
-1.  Visual Studio Code で 「**ファイル**」 トップ レベル メニューをクリックし、ドロップダウン メニューで 「**ファイルを開く**」 を選択します。「ファイルを開く」 ダイアログ ボックスで **C:\\templates\\azuredeploy.json** に移動して選択し、「**開く**」 をクリックします。
+1.  Visual Studio Code で  **C:\\templates\\azuredeploy.json** を開きます。
+
 1.  **Azuredeploy.json** ファイルのリソース セクションで、ストレージ リソース要素を削除します。
 
     ```json
@@ -373,7 +382,7 @@ lab:
     },
     ```
 
-1.  メイン テンプレートで以下の詳細をレビューします:
+1.  メイン テンプレートでは以下のことを行っています。
 
     - メイン テンプレートの Microsoft.Resources/deployments リソースを使用して、別のテンプレートにリンクします。
     - デプロイ リソースには、linkedTemplate という名前が付いています。この名前は、依存関係を構成する場合に使用されます。
@@ -390,7 +399,7 @@ lab:
 
 > **注**: ストレージ アカウントはリンク済みストレージ テンプレートで定義されているため、**Microsoft.Compute/virtualMachines** リソース定義を更新する必要があります。 
 
-1.  仮想マシン要素のリソース セクションで、以下を置き換えることによって **dependsOn** 要素を更新します:
+1.  仮想マシン要素の Resources セクションで、以下を置き換えることによって **dependsOn** 要素を更新します:
 
     ```json
     "dependsOn": [
@@ -399,11 +408,10 @@ lab:
     ]
     ```
 
-    with
+    上記を以下のように書き換えます。
 
     ```json
     "dependsOn": [
-      
       "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]",
       "linkedTemplate"
     ]
@@ -419,7 +427,7 @@ lab:
       }
     ```
 
-    with
+    上記を以下のように書き換えます。
 
     ```json
     "diagnosticsProfile": {
@@ -439,9 +447,12 @@ lab:
 
 1.  ラボのコンピューターで、Azure Portal が表示されている Web ブラウザーで 「**Cloud Shell**」 アイコンをクリックして Cloud Shell を開きます。 
     > **注**: この演習で以前に使用した PowerShell セッションがまだアクティブな場合は、Bash に切り替えなくてもこれを使用できます (次のステップ)。Cloud Shell の PowerShell と Bash セッションの両方で以下のステップを実行できます。新しい Cloud Shell セッションを開く場合は手順に従ってください。 
-1.  Cloud Shell ペインで 「**PowerShell**」 をクリックします。ドロップダウン メニューで 「**バッシュ**」 をクリックし、指示されたら 「**確認**」 をクリックします。 
+
+1.  Cloud Shell ペインで 「**Bash**」 を選択します。 
+
 1.  Cloud Shell ペインで、「**ファイルのアップロード / ダウンロード**」 アイコンをクリックし、ドロップダウン メニューで 「**アップロード**」 をクリックします。 
 1.  「**開く**」 ダイアログ ボックスで、**C:\\templates\\azuredeploy.json** に移動してこれを選択し、「**開く**」 をクリックします。
+
 1.  Cloud Shell ペインの **Bash** セッションから以下を実行し、新しくアップロードされたテンプレートを使用してデプロイを実行します。
 
     ```bash
