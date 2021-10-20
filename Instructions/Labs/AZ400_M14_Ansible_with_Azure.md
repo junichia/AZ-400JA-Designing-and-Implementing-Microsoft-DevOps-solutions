@@ -83,7 +83,7 @@ Ansible では、管理対象リソースをホスト インベントリで管�
 
     >**注**: **Cloud Shell** を起動するのが初めてであり、「**ストレージがマウントされていません**」のメッセージが表示された場合は、このラボで使用しているサブスクリプションを選択し、「**ストレージを作成**」 を選択します。 
 
-1.  Cloud Shell ペインの Bash セッションから、以下を実行して、このラボでデプロイするリソースをホストする Azure リージョンの名前を指定します (`<Azure_region>` プレースホルダーを、リソースをデプロイする予定の Azure リージョンの名前に置き換えます。名前にスペースが含まれていないことを確認してください (例: `westeurope`))。
+1.  Cloud Shell ペインの Bash セッションから、以下を実行して、このラボでデプロイするリソースをホストする Azure リージョンの名前を指定します (`<Azure_region>` プレースホルダーを、リソースをデプロイする予定の Azure リージョンの名前に置き換えます。名前にスペースが含まれていないことを確認してください (例: `eastus`))。
 
     ```bash
     LOCATION=<Azure_region>
@@ -139,13 +139,21 @@ Ansible では、管理対象リソースをホスト インベントリで管�
 
     ```bash
     sudo apt install python3-pip
+    
     sudo -H pip3 install --upgrade pip
+    
     sudo -H pip3 install ansible[azure]
+    
     sudo apt-add-repository --yes --update ppa:ansible/ansible
+    
     sudo apt install ansible
-    sudo ansible-galaxy collection install azure.azcollection
+    
+    sudo ansible-galaxy collection install azure.azcollection    ※このコマンドでエラーが出力されるかもしれませんが、無視してください。
+     
     curl -O https://raw.githubusercontent.com/ansible-collections/azure/dev/requirements-azure.txt
+    
     sudo pip3 install -r requirements-azure.txt
+    
     rm requirements-azure.txt
     ```
 
@@ -204,7 +212,7 @@ Ansible では、管理対象リソースをホスト インベントリで管�
 
 1.  指示されたら、このラボで使用している資格情報を使ってサインインし、ブラウザー タブを閉じます。
 
-1.  Cloud Shell で Bash セッションに切り替えます。Ansible コントロール ノードとして構成された Azure VM への SSH セッション内で、以下を実行して、システムに割り当てられたマネージ ID を生成します。
+1.  Cloud Shell で Bash セッションに切り替えます。Ansible コントロール ノードとして構成された Azure VM への SSH セッション内で、以下を実行して、システムに割り当てられたマネージド ID を生成します。
 
 
     ```bash
@@ -212,6 +220,8 @@ Ansible では、管理対象リソースをホスト インベントリで管�
     VM1NAME=az400m1403vm1
     az vm identity assign --resource-group $RG1NAME --name $VM1NAME
     ```
+
+    > リソースグループが見つからないというエラーが出力された場合は、参照しているサブスクリプションが異なる可能性があります。 az account コマンドを使用して現在使用しているサブスクリプションを確認してください。
 
 1.  次のコマンドを実行して、サブスクリプションの値を確認します。
 
@@ -291,7 +301,7 @@ Ansible では、管理対象リソースをホスト インベントリで管�
     cat ~/.ssh/id_rsa.pub
     ```
 
-1.  出力を記録します (出力文字列の最後のユーザー名を含む)。 
+1.  出力をクリップボードに記憶します (出力文字列の最後のユーザー名を含む)。 
 1.  以下を実行して、Nano テキストエ ディターで **new_vm_web.yml** ファイルを開きます。
 
     ```bash
@@ -303,8 +313,11 @@ Ansible では、管理対象リソースをホスト インベントリで管�
     >**注**: このリージョンが、**az400m14l03rg** リソース グループを作成した Azure リージョンと一致していることを確認してください。
 
 1.  Nano エディターで、`vm_size` エントリの値を `Standard_A0` から `Standard_DS1_v2` に変更します。
+
 1.  Nano エディターで、ファイルの最後の方にある SSH 文字列を見つけ (`key_data` エントリ)、既存のキー値を削除して、このタスクで以前に記録しておいたキー値に置き換えます。 
 
+    >**注** クリップボードから貼り付ける場合は、貼り付けたい場所にカーソルを移動し、右クリックしてから「貼り付け」を選択します。
+    
     >**注**: ファイルに含まれている `admin_username` エントリの値が、Ansible コントロール システムをホストしている Azure VM へのサインインで使われたユーザー名に一致することを確認します (**azureuser**)。`Ssh_public_keys` セクションの `path` エントリで同じユーザー名を使用する必要があります。
 
 1.  Nano エディター インターフェイス内で **ctrl + o** キーの組み合わせを押し、**Enter** キーを押してから **ctrl + x** キーの組み合わせを押して変更を保存し、ファイルを閉じます。
@@ -319,7 +332,7 @@ Ansible では、管理対象リソースをホスト インベントリで管�
 
     >**注**: 変数は、プレイブック内で定義するか、ランタイムに `ansible-playbook` コマンドを呼び出した際、`--extra-vars` オプションを含めると入力できます。VM 名には、最高 15 字の小文字と数字のみを使用できます (ハイフン、下線、大文字は使用不可)。同じ名前を使用して、該当する Azure VM に関連のあるパブリック IP アドレスのストレージ アカウントと DNS 名を生成するため、グローバルに一意であることを確認してください。 
 
-1.  以下を実行して、Ansible プレイブックを使用して Azure VM をデプロイする仮想ネットワークとそのサブネットを作成します。
+1.  以下を実行して、Azure VM をデプロイする仮想ネットワークとそのサブネットを作成します。
 
     ```bash
     RG1NAME=az400m14l03arg
@@ -357,7 +370,7 @@ Ansible では、管理対象リソースをホスト インベントリで管�
     nano ./myazure_rm.yml
     ```
 
-1.  Nano エディター インターフェイス内で以下の内容を貼り付けます:
+1.  Nano エディター インターフェイス内で以下の内容を貼り付けます。最終行の先頭の空白に注意してください。
 
     ```bash
     plugin: azure_rm
@@ -371,6 +384,7 @@ Ansible では、管理対象リソースをホスト インベントリで管�
     ```
 
 1.  Nano エディター インターフェイス内で **ctrl + o** キーの組み合わせを押し、**Enter** キーを押してから **ctrl + x** キーの組み合わせを押して変更を保存し、ファイルを閉じます。
+
 1.  Cloud Shell ペインのバッシュ セッションで、Ansible コントロール ノードとして構成されている Azure VM への SSH セッション内で以下を実行し、ping テストを行って、動的インベントリ ファイルに新しくデプロイされた Azure VM が含まれていることを確認します:
 
     ```bash
@@ -406,7 +420,10 @@ Ansible では、管理対象リソースをホスト インベントリで管�
     RGNAME='az400m14l03arg'
     VMNAME='<VM_name>'
     PIP=$(az vm show --show-details --resource-group $RGNAME --name $VMNAME --query publicIps --output tsv)
+    Echo $PIP
     ```
+ 
+ パブリックIPアドレスが表示されることを確認してください。
 
 1.  次の手順を実行して、新しくデプロイされた Azure VM が現在Webサービスを実行していないことを確認します (ここで、`<IP_address>` プレースホルダーは、前のタスクでプロビジョニングした Azure VM のネットワーク アダプターに割り当てられたパブリック IP アドレスを表します)。
 
