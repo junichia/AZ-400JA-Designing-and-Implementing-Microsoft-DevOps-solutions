@@ -78,7 +78,7 @@ lab:
 
 このタスクでは、Windows Server 2016 のほか、SQL Express 2017、Chrome、Firefox を実行している Azure VM をプロビジョニングします。
 
-1.  「Azure にデプロイ」ボタンをクリックします。[![Azure にデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json)これで自動的に Azure portal の [**カスタム デプロイ**] ブレードにリダイレクトされます。
+1.  右の「Deploy to Azure」ボタンをクリックします。[![Azure にデプロイ](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Falmvm%2Fmaster%2Flabs%2Fvstsextend%2Fselenium%2Farmtemplate%2Fazuredeploy.json)これで自動的に Azure portal の [**カスタム デプロイ**] ブレードにリダイレクトされます。
 1.  指示されたら、このラボで使用する Azure サブスクリプションで所有者のロールがあり、このサブスクリプションに関連のある Azure AD テナントでグローバル管理者のロールがあるユーザー アカウントを使用してサインインします。
 
 1. **カスタム デプロイ** ブレードで **テンプレートの編集** をクリックします。
