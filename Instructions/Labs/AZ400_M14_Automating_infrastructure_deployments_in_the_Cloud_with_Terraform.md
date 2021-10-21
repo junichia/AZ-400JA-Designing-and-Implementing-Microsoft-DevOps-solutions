@@ -208,7 +208,7 @@ Terraform 構成ファイルは、単一のアプリケーションまたはデ�
 
 1.  「**Terraform**」ペインの「**Azure サブスクリプション**」ドロップダウン リストで、以前に使用したものと同じ Azure サービス接続を選択します。 
 
-1. **Additional command arguments** テキストボックスrに `-out=tfplan.` を入力します。
+1. **Additional command arguments** テキストボックスに `-out=tfplan` を入力します。
     
     > **注**: `terraform plan` コマンドを使用して実行計画を作成します。Terraform は、構成ファイルで指定された希望する状態を実現するために必要なアクションを決定します。これにより、実際に変更を適用しなくても、どの変更が範囲内なのか確認できます。`terraform plan` コマンドの詳細については、[Terraform ドキュメント](https://www.terraform.io/docs/commands/plan.html)を参照してください
 
