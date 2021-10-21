@@ -220,7 +220,7 @@ Web ブラウザーを使用して [LaunchDarkly Web サイト](https://launchda
 
 1. ユーザー ストーリー タブの左上コーナーで 「**Assign To**」が「**未割り当て**」の場合は、Azure DevOps ユーザー名を入力して **Enter** キーを押し、作業項目を自分に割り当てます。その後、「**Save Work Item**」 をクリックして変更を保存します。
 
-4.  Visual Studio ウィンドウで 「**Git Change**」 ペインに切り替え、「**メEnter a message**」 テキストボックスに「**Integated LaunchDarkly #<作業項目ID>**」と入力します。「**Commit All**」 ボタンの隣にある下向き矢印をクリックし、ドロップダウン リストで 「**Commit All and Push**」 をクリックします。 
+4.  Visual Studio ウィンドウで 「**Git Change**」 ペインに切り替え、「**Enter a message**」 テキストボックスに「**Integated LaunchDarkly #<作業項目ID>**」と入力します。「**Commit All**」 ボタンの隣にある下向き矢印をクリックし、ドロップダウン リストで 「**Commit All and Push**」 をクリックします。 
 
 #### タスク 3: リリース中に自動的に LaunchDarkly 機能フラグをロールアウトする
 
