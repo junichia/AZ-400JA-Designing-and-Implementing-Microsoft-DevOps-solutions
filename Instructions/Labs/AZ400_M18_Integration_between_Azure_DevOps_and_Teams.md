@@ -85,7 +85,7 @@ lab:
 
 1. 「**新しいプロジェクトの作成**」 ページで、欠落している拡張機能をインストールするよう指示されたら 「**ARM 出力**」 の下にあるチェックボックスを選択し、「**プロジェクトの作成**」 をクリックします。。
 
-    > **注**: プロジェクトの作成途中でエラーが発生します（右側に**View Diagnostics**と赤く表示されます）になることがありますが、これは無視してください。必要なぷろじぇくとやリポジトリ、パイプラインは全て作成されています。
+    > **注**: プロジェクトの作成途中でエラーが発生することがありますが（右側に**View Diagnostics**と赤く表示されます）、これは無視してください。必要なぷろじぇくとやリポジトリ、パイプラインは全て作成されています。
     
     > **注**: プロセスが完了するまでお待ちください。これにはおよそ 2 分かかる場合があります。プロセスが失敗した場合は、DevOps 組織に移動し、プロジェクトを削除して、再試行してください。
 
@@ -95,11 +95,7 @@ lab:
 
 このタスクでは、Microsoft Teams でチームを作成します。
 
-1.  ラボコンピューターに Teams がインストールされていない場合は、ラボのコンピューターで Web ブラウザーを起動して [Microsoft Teams ダウンロード ページ](https://www.microsoft.com/ja-jp/microsoft-365/microsoft-teams/download-app) に移動します。そこから既定の設定で Microsoft Teams をダウンロードしてインストールします。 
-
-1.  ラボのコンピューターでデスクトップ アプリを使い、**Microsoft Teams** を起動します。
-
-    > **注**: Web ブラウザーを使用して [Microsoft Teams 起動ページ](https://teams.microsoft.com/dl/launcher/launcher.html?url=/_%23/l/home/0/0&type=home) に移動することもできます
+1. Web ブラウザーを使用して [Microsoft Teams 起動ページ](https://teams.microsoft.com/dl/launcher/launcher.html?url=/_%23/l/home/0/0&type=home) に移動します。
 
 1.  サインインするよう指示されたら、Teams のライセンスを持ち、Azure DevOps 組織へのアクセス権限がある Microsoft Account 使ってサインインします。
 
