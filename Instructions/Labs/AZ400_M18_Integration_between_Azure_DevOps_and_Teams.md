@@ -242,13 +242,13 @@ lab:
 
 1.  「**Website-CI**」 が表示されている URL をクリップボードにコピーします。
 
-    > **注**: URL は、`https://dev.azure.com/<organization_name>liveid2530565/Tailwind%20Traders/_build?definitionId=6` の形式になります。`<organization_name>` は、DevOps 組織の名前を示すプレースホルダーです。
+    > **注**: URL は、`https://dev.azure.com/<organization_name>liveid2530565/Tailwind%20Traders/_build?definitionId=xx` の形式になります。`<organization_name>` は、DevOps 組織の名前を示すプレースホルダーです。
 
     > **注**: パイプライン URL は、*definitionId* または *buildId/releaseId* が URL に含まれているパイプライン内のどのページでも構いません。
 
 1.  Teams に戻り、**Tailwind Traders** チームの 「**一般**」 チャネルで `@Azure Pipelines subscribe コピーしたURL` を投稿し、ビルド パイプラインにサブスクライブします (必ず `<organization_name>` プレースホルダーは DevOps 組織の名前に置き換えてください)。
 
-    >**注** **URL 自動的にページ名に変換されてしまう場合は、一旦メモ帳等に貼り付け、それをコピーしてから Teams に貼り付けてください。**
+    >**注** **URL をペーストする場合は、Ctrl + Shift + v を使用して、生のURLを貼り付けるようにしてください。**
 
 1.  サブスクリプションが作成されたという通知を待ちます。
  
