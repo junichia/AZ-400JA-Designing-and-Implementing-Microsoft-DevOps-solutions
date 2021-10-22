@@ -420,7 +420,7 @@ Ansible では、管理対象リソースをホスト インベントリで管�
     RGNAME='az400m14l03arg'
     VMNAME='<VM_name>'
     PIP=$(az vm show --show-details --resource-group $RGNAME --name $VMNAME --query publicIps --output tsv)
-    Echo $PIP
+    echo $PIP
     ```
  
  パブリックIPアドレスが表示されることを確認してください。
